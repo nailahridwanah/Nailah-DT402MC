@@ -13,7 +13,7 @@ async function fetchDataAndRenderChart(
     }
 }
 
-fetchDataAndRenderChart("/api/low_stock_levels", "stockChart", (data) => ({
+/*fetchDataAndRenderChart("/api/low_stock_levels", "stockChart", (data) => ({
     type: "bar",
     data: {
       labels: data.products,
@@ -38,10 +38,8 @@ fetchDataAndRenderChart("/api/low_stock_levels", "stockChart", (data) => ({
     },
   })); */
 
-fetchDataAndRenderChart('/api/task_status_pie')
-          .then(response => response.json())
-          .then(data => {
-               const ctx = document.getElementById('pieChart').getContext('2d');
+fetchDataAndRenderChart('/api/task_status_pie', 'StatusPieChart', (data => {
+               const ctx = document.getElementById('StatusPieChart').getContext('2d');
                new Chart(ctx, {
                    type: 'pie',
                    data: {
@@ -53,12 +51,12 @@ fetchDataAndRenderChart('/api/task_status_pie')
                                'rgb(152, 206, 0)',
                                'rgb(255, 206, 86)',
                                'rgb(255, 255, 0)'
-                           ]
+                           ],
                        }]
                    }
                });
-           })
-           
+           }))
+
 fetchDataAndRenderChart('/api/week_accuracy_bar', 'WeekAccuracyBar', (data) => ({
     type: 'bar',
     data: {
@@ -67,8 +65,8 @@ fetchDataAndRenderChart('/api/week_accuracy_bar', 'WeekAccuracyBar', (data) => (
         {
           label: 'Weekly Accuracy',
           data: data.counts,
-          backgroundColor: 'rgb(237, 243, 237)',
-          borderColor: 'rgb(42, 43, 41)',
+          backgroundColor: 'rgb(152, 206, 0)',
+          borderColor: 'rgb(114, 117, 110)',
           borderWidth: 1,
         },
       ],

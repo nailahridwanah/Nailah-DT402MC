@@ -28,6 +28,10 @@ color: #ffffff;
 padding: 20px;
 }
 
+.quarter-width {
+width: 25%;
+}
+
 .full-width {
 width: 100%;
 }
@@ -46,14 +50,14 @@ height: 250px;
 }
 
 /* Adjusting the size of the bar charts */
-#ordersChart,
-#revenueChart {
-height: 300px;
+#WeekAccuracyBar {
+height: 80% !important;
+width: 60% !important;
 }
 
-#popularProductsChart,
-#stockChart {
-height: 250px;
+#StatusPieChart {
+height: 35% !important;
+width: 40% !important;
 }
 
 /* Clearfix for floating elements */
