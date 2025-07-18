@@ -26,10 +26,15 @@ color: #ffffff;
 /* Chart containers for responsive layout */
 .chart-container {
 padding: 20px;
+flex: 1;
 }
 
 .quarter-width {
 width: 25%;
+}
+
+.sixty-width {
+width: 60%;
 }
 
 .full-width {
@@ -38,9 +43,30 @@ width: 100%;
 
 .half-width {
 width: 50%;
-float: left;
-box-sizing: border-box;
-padding: 20px;
+display: flex;
+gap: 20px;
+flex: 1
+
+}
+
+/* Clearfix for floating elements */
+.chart-row::after {
+content: "";
+clear: both;
+display: flex;
+gap: 20px;
+}
+
+.chart-row {
+  display: flex;
+  gap: 24px; /* Optional: space between charts */
+}
+
+.chart-container {
+  flex: 1; /* Each chart takes equal width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Adjusting the size of the pie charts */
@@ -49,7 +75,7 @@ padding: 20px;
 height: 250px;
 }
 
-/* Adjusting the size of the bar charts */
+/* Adjusting the size of the bar charts 
 #WeekAccuracyBar {
 height: 80% !important;
 width: 60% !important;
@@ -58,14 +84,9 @@ width: 60% !important;
 #StatusPieChart {
 height: 35% !important;
 width: 40% !important;
-}
+} */
 
-/* Clearfix for floating elements */
-.chart-row::after {
-content: "";
-clear: both;
-display: table;
-}
+
 
 /* Copyright notice */
 .footer {

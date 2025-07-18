@@ -13,31 +13,6 @@ async function fetchDataAndRenderChart(
     }
 }
 
-/*fetchDataAndRenderChart("/api/low_stock_levels", "stockChart", (data) => ({
-    type: "bar",
-    data: {
-      labels: data.products,
-      datasets: [
-        {
-          label: "Low Stock",
-          data: data.quantities,
-          // ... other config
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-        x: {
-          display: false, // This will hide the x-axis labels
-        },
-      },
-    },
-  })); */
-
 fetchDataAndRenderChart('/api/task_status_pie', 'StatusPieChart', (data => {
                const ctx = document.getElementById('StatusPieChart').getContext('2d');
                new Chart(ctx, {
