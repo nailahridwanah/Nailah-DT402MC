@@ -1,52 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Nailah DT402 MC Data Dashboard</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns'></script>
     <!-- Stylesheet connection -->
-    <link rel="stylesheet" href="../static/dashboard_stylesheet.css">
+    <link rel='stylesheet' href='../static/dashboard_stylesheet.css'>
 </head>
 
 <body>
 
+
+
     <header>
-        <div class="dashboard-title">BP Task Performance Tracker</div>
+        <div class='dashboard-title'>BP Task Performance Tracker</div>
     </header>
 
+    </div>
     <div class='container'>
 
         <!-- 4 Charts here -->
 
     <section>
-        <div class="chart-row">
-                <div class="chart-container sixty-width">
-                    <h3>Task Status Pie Chart</h3>
-                    <canvas id="StatusPieChart" width="200" height="200"></canvas>
-                    <!-- Calling status pie chart from script-->
-                </div>
-                <div class="chart-container sixty-width">
+        <div class='chart-row'>
+            <div class='chart-container half-width'>
+                <h4>Task Status Pie Chart</h4>
+                <canvas id='StatusPieChart'></canvas>
+                <!-- Calling status pie chart from script-->
+            </div>
+            <div class='chart-container half-width'>
 
-                    <h3>Task Accuracy per Week</h3>
-                    <canvas id="WeekAccuracyBar" width="400" height="200"></canvas>
-                    <!-- Calling accuracy bar chart from script-->
+                <h4>Task Accuracy per Week</h4>
+                <canvas id='WeekAccuracyLine' width='400' height='200'></canvas>
+                <!-- Calling accuracy line chart from script-->
+                 
+                 <h4>Tasks per Member</h4>
+                <canvas id='TaskMemberBar' width='400' height='200'></canvas>
+                <!-- Calling task member count bar chart from script-->
                 </div>
         </div>
+        <div class='chart-row'>
+
+        </div>
     </section>
+    
 
     </div>
 
     <footer>
-        <div class="footer"> Module 2 Challenge - Nailah Ridwanah </div>
+        <div class='footer'> Module 2 Challenge - Nailah Ridwanah </div>
     </footer>
     
     <!-- Load our javascript -->
-    <script src="../static/dashboard_script.js"></script>    
+    <script src='../static/dashboard_script.js'></script>    
 
 </body>
 
 </html>
+
+<!-- <canvas id='TimeAccuracyScatter'></canvas> -->

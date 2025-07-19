@@ -1,60 +1,56 @@
 /* General styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
 }
 
+
 .container {
-width: 100%;
-padding: 0;
-background-color: #ffffff;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Dashboard title */
 .dashboard-title {
-text-align: center;
-font-size: 24px;
-margin-bottom: 20px;
-padding: 20px 0;
-background-color: #009900;
-color: #ffffff;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  background-color: #009900;
+  color: #ffffff;
 }
 
 /* Chart containers for responsive layout */
 .chart-container {
-padding: 20px;
-flex: 1;
+  padding: 20px;
+  flex: 1;
 }
 
 .quarter-width {
-width: 25%;
-}
-
-.sixty-width {
-width: 60%;
+  width: 25%;
 }
 
 .full-width {
-width: 100%;
+  width: 100%;
 }
 
 .half-width {
-width: 50%;
-display: flex;
-gap: 20px;
-flex: 1
-
+  width: 50%;
+  display: flex;
+  gap: 20px;
+  flex: 1;
 }
 
 /* Clearfix for floating elements */
 .chart-row::after {
-content: "";
-clear: both;
-display: flex;
-gap: 20px;
+  content: "";
+  clear: both;
+  display: flex;
+  gap: 20px;
 }
 
 .chart-row {
@@ -69,30 +65,40 @@ gap: 20px;
   align-items: center;
 }
 
-/* Adjusting the size of the pie charts */
-#categoryPopularityChart,
-#paymentMethodsChart {
-height: 250px;
+/* ----- Visualisation styling section start ----- */
+#TimeAccuracyScatter{
+  height: 250px;
+  border-color: #6e6e6e;
+  accent-color: #98ce00;
+  border-radius: 1.5,
 }
 
-/* Adjusting the size of the bar charts 
+#TaskMemberBar {
+  border-color: rgb(110, 110, 110);
+  border-width: 1.5;
+}
+
+#AccuracySlider {
+  width: 150px;
+  height: 4px;
+  background: #98ce00; 
+  accent-color: #98ce00;
+  border-radius: 2px;
+}
+
 #WeekAccuracyBar {
-height: 80% !important;
-width: 60% !important;
+  height: 250px;
+  border-color: #6e6e6e;
+  border-width: 1.5;
 }
+/* ----- Visualisation styling section end ----- */
 
-#StatusPieChart {
-height: 35% !important;
-width: 40% !important;
-} */
-
-
-
-/* Copyright notice */
+/* Footer styling */
 .footer {
-text-align: center;
-margin-top: 40px;
-padding: 20px 0;
-background-color: #009900;
-color: #ffffff;
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  background-color: #009900;
+  color: #ffffff;
 }
+

@@ -26,9 +26,9 @@ def task_status_pie():
     labels = Status_Counts.index.tolist()
     counts = Status_Counts.values.tolist()
     
-    return jsonify({"labels": labels, "counts": counts})
+    return jsonify({'labels': labels, 'counts': counts})
 
-@app.route('/api/week_accuracy_bar')
+@app.route('/api/week_accuracy_line')
 def week_accuracy_bar():
     csv_path = working_directory / 'ml_task_progress.csv'
     df = pd.read_csv(csv_path)
@@ -36,7 +36,24 @@ def week_accuracy_bar():
     labels = week_counts.index.tolist()
     counts = week_counts.values.tolist()
     return jsonify({'labels': labels, 'counts': counts})
-    
+
+
+
+@app.route('/api/task_member_count_bar')
+def task_member_count_bar():
+    csv_path = working_directory / 'ml_task_progress.csv'
+    df = pd.read_csv(csv_path)
+    df['Team Member IDs'].astype(str).str.contains(',').any()
+    df['Team Member IDs'] = df['Team Member IDs'].astype(str)
+    df = df.assign(MemberID=df['Team Member IDs'].str.split(','))
+    df = df.explode('MemberID')
+    member_counts = df['MemberID'].str.strip().value_counts()
+    member_counts = member_counts.sort_values(ascending=True)
+    labels = member_counts.index.tolist()
+    counts = member_counts.values.tolist()
+    return jsonify({'labels': labels, 'counts': counts})
+
+
 
 if __name__ == '__main__':
     app.run(host='localhost', port=8000, debug=True)
