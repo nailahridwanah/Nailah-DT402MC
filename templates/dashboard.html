@@ -18,50 +18,53 @@
 
 
     <header>
-        <div class='dashboard-title'>BP Task Performance Tracker</div>
+        <div class='dashboard-title'>BP Machine Learning Task Performance Tracker</div>
     </header>
 
 
     <div class='container'>
-    <section>
-        <div class='chart-row'>
-            <div class='chart-container'>
-                <h4>Task Status Pie Chart</h4>
-                <canvas id='StatusPieChart'></canvas>
-                <!-- Calling status pie chart from script-->
-                
-                <h4>Task Priority Pie Chart</h4>
-                <canvas id='PriorityPieChart'></canvas>
-                <!-- Calling status pie chart from script-->
+        <section>
+            <div class='chart-row'>
+                <div class='chart-container'>
 
-                
+                    <h4>Task Status Pie Chart</h4>
+                    <canvas id='StatusPieChart'></canvas>
+                    <!-- Calling status pie chart from script-->
+                    
+                    <h4>Task Priority Pie Chart</h4>
+                    <canvas id='PriorityPieChart'></canvas>
+                    <!-- Calling priority pie chart from script-->
+                    
+                </div>
+
+                <div class='chart-container'>
+
+                    <h4>Task Accuracy per Week</h4>
+                    <canvas id='WeekAccuracyLine'></canvas> 
+                    <!-- Calling accuracy line chart from script-->
+                    
+
+                    <h4>Time Spent vs Accuracy Scatter Chart</h4>
+                    <canvas id='TimeSpentAccuracyScatter'></canvas>
+                    <!-- Calling time accuracy scatter chart from script-->
+
+                </div>
+
+                <div class='chart-container'>
+
+                    <h4>Tasks per Member</h4>
+                    <canvas id='TaskMemberBar'></canvas>
+                    <!-- Calling task member count bar chart from script-->
+
+                    <h4>Filters</h4>
+                    <label for="accuracySlider">Minimum Accuracy:</label>
+                    <input type="range" id="AccuracySlider" min="0.00" max="1.0" value="0.5" step="0.01">
+                    <span id="AccuracyValue">0.5</span>
+                    <!-- Slider filter for accuracy - setting the increments, base setting and style -->
+
+                </div>
             </div>
-            <div class='chart-container'>
-
-                <h4>Task Accuracy per Week</h4>
-                <canvas id='WeekAccuracyLine'></canvas>
-                <!-- Calling accuracy line chart from script-->
-                
-
-                <h4>Time Spent vs Accuracy Scatter Chart</h4>
-                <canvas id='TimeSpentAccuracyScatter'></canvas>
-                <!-- Calling time accuracy scatter chart from script-->
-
-            </div>
-            <div class='chart-container'>
-
-                <h4>Tasks per Member</h4>
-                <canvas id='TaskMemberBar'></canvas>
-                <!-- Calling task member count bar chart from script-->
-
-                <h4>Filters</h4>
-                <label for="accuracySlider">Minimum Accuracy:</label>
-                <input type="range" id="AccuracySlider" min="0.00" max="1.0" value="0.5" step="0.01">
-                <span id="AccuracyValue">0.5</span>
-
-            </div>
-        </div>
-    </section>
+        </section>
     </div>
 
     

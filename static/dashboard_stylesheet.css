@@ -12,7 +12,7 @@ body {
   font-size: 24px;
   margin-bottom: 20px;
   padding: 20px 0;
-  background-color: #009900;
+  background-color: #009900; /* BP colours for background */
   color: #ffffff;
 }
 
@@ -37,14 +37,12 @@ body {
   justify-content: space-between;
 }
 
-/* Clearfix for floating elements */
 .chart-row::after {
   content: "";
   clear: both;
   display: flex;
   gap: 20px;
 }
-
 
 .chart-row {
     display: flex;
@@ -54,7 +52,7 @@ body {
 }
 
 .chart-container {
-max-width: fit-content;
+max-width: fit-content; /*Ensures the container fits the content inside it */
 }
 
 .container {
@@ -63,16 +61,17 @@ max-width: fit-content;
   padding: 10px;
   background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* ----- Visualisation styling section start ----- */
+
 #StatusPieChart {
   height: auto !important;
   width: auto !important;
   border-color: #6e6e6e;
   border-width: 1.5;
-  padding-bottom: 30px;
+  padding-bottom: 30px; /* Padding for better spacing between graphs */
 }
 
 #PriorityPieChart {
@@ -83,14 +82,14 @@ max-width: fit-content;
 }
 
 #WeekAccuracyLine {
-  height: 300px !important;
+  height: 300px !important; /* Setting these heights to numbers to show charts correctly */
   width: auto !important;
   border-color: #6e6e6e;
   border-width: 1.5;
 }
 
 #TimeSpentAccuracyScatter{
-  height: 300px !important;
+  height: 300px !important; /* Setting these heights to numbers to show charts correctly */
   width: auto !important;
   border-color: #6e6e6e;
   accent-color: #98ce00;
@@ -98,7 +97,7 @@ max-width: fit-content;
 }
 
 #TaskMemberBar {
-  height: 300px !important;
+  height: 300px !important; /* Setting these heights to numbers to show charts correctly */
   width: auto !important;
   border-color: rgb(110, 110, 110);
   border-width: 1.5;
@@ -114,8 +113,6 @@ max-width: fit-content;
   border-radius: 1.5;
   text-align: center;
 }
-
-
 
 /* ----- Visualisation styling section end ----- */
 

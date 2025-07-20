@@ -57,7 +57,7 @@ function drawLineChart(data) {
       },
       scales: {
         x: { title: { display: true, text: 'Week' } },
-        y: { title: { display: true, text: 'Accuracy (%)' }, beginAtZero: false }
+        y: { title: { display: true, text: 'Accuracy (%)' }, beginAtZero: false } // Y-axis set to not start at zero for better visualisation
     }
   }});
 }
@@ -83,7 +83,7 @@ function drawScatterChart({ points }) {
       responsive: true,
       scales: {
         x: { title: { display: true, text: 'Hours' } },
-        y: { title: { display: true, text: 'Accuracy (%)' }, beginAtZero: true }
+        y: { title: { display: true, text: 'Accuracy (%)' }, beginAtZero: true } // Y-axis starts at zero
       }
     }
   });
@@ -100,12 +100,11 @@ slider.oninput = function () {
   // Filter line chart data
   const filteredLine = {
     labels: [],
-    counts: []
-  };
+    counts: []};
 
   for (let i = 0; i < weekAccuracyData.labels.length; i++) {
     if (weekAccuracyData.counts[i] >= threshold) {
-      filteredLine.labels.push(weekAccuracyData.labels[i]);
+      filteredLine.labels.push(weekAccuracyData.labels[i]); 
       filteredLine.counts.push(weekAccuracyData.counts[i]);
     }
   }
@@ -141,13 +140,13 @@ fetchDataAndRenderChart('/api/priority_pie', 'PriorityPieChart', (data => ({
                        datasets: [{
                            data: data.counts,
                            backgroundColor: [
-                               'rgb(0, 155, 0)', // Pie chart colouring
+                               'rgb(0, 155, 0)', // Pie chart colouring with BP colours
                                'rgb(152, 206, 0)',
                                'rgb(255, 206, 86)'],
                             borderColor: 'rgb(110, 110, 110)',
-                            borderWidth: 1.5, // Made border thicker for visual aesthetics
-                       }]
-                   }
+                            borderWidth: 1.5, 
+                    }]
+                }
                })
             ));
 
@@ -160,7 +159,7 @@ fetchDataAndRenderChart('/api/task_member_count_bar', 'TaskMemberBar', (data) =>
         {
           label: 'Tasks per Member',
           data: data.counts,
-          backgroundColor: 'rgb(152, 206, 0)',
+          backgroundColor: 'rgb(152, 206, 0)', // Bar chart colouring with BP colours
           borderColor: 'rgb(110, 110, 110)',
           borderWidth: 1.5,
         },
