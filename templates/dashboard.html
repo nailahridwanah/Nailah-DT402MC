@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Nailah DT402 MC Data Dashboard</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns'></script>
     <!-- Stylesheet connection -->
@@ -20,36 +21,50 @@
         <div class='dashboard-title'>BP Task Performance Tracker</div>
     </header>
 
-    </div>
+
     <div class='container'>
-
-        <!-- 4 Charts here -->
-
     <section>
         <div class='chart-row'>
-            <div class='chart-container half-width'>
+            <div class='chart-container'>
                 <h4>Task Status Pie Chart</h4>
                 <canvas id='StatusPieChart'></canvas>
                 <!-- Calling status pie chart from script-->
+                
+                <h4>Task Priority Pie Chart</h4>
+                <canvas id='PriorityPieChart'></canvas>
+                <!-- Calling status pie chart from script-->
+
+                
             </div>
-            <div class='chart-container half-width'>
+            <div class='chart-container'>
 
                 <h4>Task Accuracy per Week</h4>
-                <canvas id='WeekAccuracyLine' width='400' height='200'></canvas>
+                <canvas id='WeekAccuracyLine'></canvas>
                 <!-- Calling accuracy line chart from script-->
-                 
-                 <h4>Tasks per Member</h4>
-                <canvas id='TaskMemberBar' width='400' height='200'></canvas>
-                <!-- Calling task member count bar chart from script-->
-                </div>
-        </div>
-        <div class='chart-row'>
+                
 
+                <h4>Time Spent vs Accuracy Scatter Chart</h4>
+                <canvas id='TimeSpentAccuracyScatter'></canvas>
+                <!-- Calling time accuracy scatter chart from script-->
+
+            </div>
+            <div class='chart-container'>
+
+                <h4>Tasks per Member</h4>
+                <canvas id='TaskMemberBar'></canvas>
+                <!-- Calling task member count bar chart from script-->
+
+                <h4>Filters</h4>
+                <label for="accuracySlider">Minimum Accuracy:</label>
+                <input type="range" id="AccuracySlider" min="0.00" max="1.0" value="0.5" step="0.01">
+                <span id="AccuracyValue">0.5</span>
+
+            </div>
         </div>
     </section>
-    
-
     </div>
+
+    
 
     <footer>
         <div class='footer'> Module 2 Challenge - Nailah Ridwanah </div>
@@ -61,5 +76,3 @@
 </body>
 
 </html>
-
-<!-- <canvas id='TimeAccuracyScatter'></canvas> -->

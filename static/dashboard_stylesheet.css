@@ -6,14 +6,6 @@ body {
   background-color: #ffffff;
 }
 
-
-.container {
-  width: 100%;
-  padding: 0;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
 /* Dashboard title */
 .dashboard-title {
   text-align: center;
@@ -22,12 +14,6 @@ body {
   padding: 20px 0;
   background-color: #009900;
   color: #ffffff;
-}
-
-/* Chart containers for responsive layout */
-.chart-container {
-  padding: 20px;
-  flex: 1;
 }
 
 .quarter-width {
@@ -45,6 +31,12 @@ body {
   flex: 1;
 }
 
+.chart-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 /* Clearfix for floating elements */
 .chart-row::after {
   content: "";
@@ -53,44 +45,78 @@ body {
   gap: 20px;
 }
 
+
 .chart-row {
-  display: flex;
-  gap: 24px; /* Optional: space between charts */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
 }
 
 .chart-container {
-  flex: 1; /* Each chart takes equal width */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+max-width: fit-content;
+}
+
+.container {
+  max-width: 1650px;
+  max-height: fit-content;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* ----- Visualisation styling section start ----- */
-#TimeAccuracyScatter{
-  height: 250px;
+#StatusPieChart {
+  height: auto !important;
+  width: auto !important;
+  border-color: #6e6e6e;
+  border-width: 1.5;
+  padding-bottom: 30px;
+}
+
+#PriorityPieChart {
+  height: auto !important;
+  width: auto !important;
+  border-color: #6e6e6e;
+  border-width: 1.5;
+}
+
+#WeekAccuracyLine {
+  height: 300px !important;
+  width: auto !important;
+  border-color: #6e6e6e;
+  border-width: 1.5;
+}
+
+#TimeSpentAccuracyScatter{
+  height: 300px !important;
+  width: auto !important;
   border-color: #6e6e6e;
   accent-color: #98ce00;
   border-radius: 1.5,
 }
 
 #TaskMemberBar {
+  height: 300px !important;
+  width: auto !important;
   border-color: rgb(110, 110, 110);
   border-width: 1.5;
+  padding-bottom: 30px;
 }
 
 #AccuracySlider {
-  width: 150px;
-  height: 4px;
+  padding: 10;
+  width: 250px;
+  height: 8px;
   background: #98ce00; 
   accent-color: #98ce00;
-  border-radius: 2px;
+  border-radius: 1.5;
+  text-align: center;
 }
 
-#WeekAccuracyBar {
-  height: 250px;
-  border-color: #6e6e6e;
-  border-width: 1.5;
-}
+
+
 /* ----- Visualisation styling section end ----- */
 
 /* Footer styling */

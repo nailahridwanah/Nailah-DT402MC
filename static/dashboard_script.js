@@ -13,6 +13,110 @@ async function fetchDataAndRenderChart(
     }
 }
 
+let weekAccuracyData = null;
+let weekAccuracyScatterData = null;
+let lineChart = null;
+let scatterChart = null;
+
+// Fetch both datasets separately and draw charts
+Promise.all([
+  fetch('/api/week_accuracy_line').then(res => res.json()),
+  fetch('/api/time_spent_accuracy_scatter').then(res => res.json())
+]).then(([lineData, scatterData]) => {
+  weekAccuracyData = lineData;
+  weekAccuracyScatterData = scatterData.labels.map((label, index) => ({
+    x: label, // Hours (shouldn't change)
+    y: scatterData.counts[index] // Accuracy (Changing using slider)
+  }));
+  drawLineChart(lineData);
+  drawScatterChart({points: weekAccuracyScatterData});
+}).catch(error => {
+  console.error('Data fetch failed:', error);
+});
+
+// Render Line Chart: Weekly Accuracy
+function drawLineChart(data) {
+  const ctx = document.getElementById('WeekAccuracyLine').getContext('2d');
+  if (lineChart) lineChart.destroy();
+  lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        label: 'Average Weekly Accuracy',
+        data: data.counts,
+        backgroundColor: 'rgb(152, 206, 0)',
+        borderColor: 'rgb(110, 110, 110)',
+        borderWidth: 1.5
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { title: { display: true, text: 'Week' } },
+        y: { title: { display: true, text: 'Accuracy (%)' }, beginAtZero: false }
+    }
+  }});
+}
+
+
+// Render Scatter Chart: Time Spent vs. Accuracy
+function drawScatterChart({ points }) {
+  const ctx = document.getElementById('TimeSpentAccuracyScatter').getContext('2d');
+  if (scatterChart) scatterChart.destroy();
+
+  scatterChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: 'Time Spent (hours) vs. Model Accuracy (%)',
+        data: points,
+        backgroundColor: 'rgb(152, 206, 0)',
+        borderColor: 'rgb(110, 110, 110)',
+        borderWidth: 1.5
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { title: { display: true, text: 'Hours' } },
+        y: { title: { display: true, text: 'Accuracy (%)' }, beginAtZero: true }
+      }
+    }
+  });
+}
+
+// Slider filtering for Line and Scatter Chart
+const slider = document.getElementById('AccuracySlider');
+const valueDisplay = document.getElementById('AccuracyValue');
+
+slider.oninput = function () {
+  const threshold = parseFloat(this.value);
+  valueDisplay.textContent = threshold;
+
+  // Filter line chart data
+  const filteredLine = {
+    labels: [],
+    counts: []
+  };
+
+  for (let i = 0; i < weekAccuracyData.labels.length; i++) {
+    if (weekAccuracyData.counts[i] >= threshold) {
+      filteredLine.labels.push(weekAccuracyData.labels[i]);
+      filteredLine.counts.push(weekAccuracyData.counts[i]);
+    }
+  }
+
+  // Filter scatter chart data using weekAccuracyScatterData
+  const filteredScatter = weekAccuracyScatterData.filter(point => parseFloat(point.y) >= threshold);
+
+  drawLineChart(filteredLine);
+  drawScatterChart({ points: filteredScatter });
+};
+
 fetchDataAndRenderChart('/api/task_status_pie', 'StatusPieChart', (data => ({
                    type: 'pie',
                    data: {
@@ -20,10 +124,9 @@ fetchDataAndRenderChart('/api/task_status_pie', 'StatusPieChart', (data => ({
                        datasets: [{
                            data: data.counts,
                            backgroundColor: [
-                               'rgb(0, 155, 0)',
+                               'rgb(0, 155, 0)', // Pie chart colouring
                                'rgb(152, 206, 0)',
-                               'rgb(255, 206, 86)',
-                               'rgb(255, 255, 0)'],
+                               'rgb(255, 206, 86)'],
                             borderColor: 'rgb(110, 110, 110)',
                             borderWidth: 1.5, // Made border thicker for visual aesthetics
                        }]
@@ -31,20 +134,22 @@ fetchDataAndRenderChart('/api/task_status_pie', 'StatusPieChart', (data => ({
                })
             ));
 
-fetchDataAndRenderChart('/api/week_accuracy_line', 'WeekAccuracyLine', (data) => ({
-    type: 'line',
-    data: {
-      labels: data.labels,
-      datasets: [
-        {
-          label: 'Weekly Accuracy',
-          data: data.counts,
-          backgroundColor: 'rgb(152, 206, 0)',
-          borderColor: 'rgb(110, 110, 110)',
-          borderWidth: 1.5,
-        },
-      ],
-    }}));
+fetchDataAndRenderChart('/api/priority_pie', 'PriorityPieChart', (data => ({
+                   type: 'pie',
+                   data: {
+                       labels: data.labels,
+                       datasets: [{
+                           data: data.counts,
+                           backgroundColor: [
+                               'rgb(0, 155, 0)', // Pie chart colouring
+                               'rgb(152, 206, 0)',
+                               'rgb(255, 206, 86)'],
+                            borderColor: 'rgb(110, 110, 110)',
+                            borderWidth: 1.5, // Made border thicker for visual aesthetics
+                       }]
+                   }
+               })
+            ));
 
 
 fetchDataAndRenderChart('/api/task_member_count_bar', 'TaskMemberBar', (data) => ({
